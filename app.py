@@ -1117,7 +1117,7 @@ with st.sidebar:
     
     tab_selection = st.radio(
         "Choose a section:",
-        ["🔮 Predict Performance", "📊 Analytics Dashboard", "🤖 Train Model", "💡 AI Insights", "📁 Dataset Info", "🔄 Learning Center", "🤖 AI Assistant"],
+        ["📖 Overview", "🔮 Predict Performance", "📊 Analytics Dashboard", "🤖 Train Model", "💡 AI Insights", "📁 Dataset Info", "🔄 Learning Center", "🤖 AI Assistant"],
         label_visibility="collapsed"
     )
     
@@ -1189,6 +1189,262 @@ with st.sidebar:
         </div>
         """, unsafe_allow_html=True)
 
+# Add the Overview tab at the beginning of main content
+# Add the Overview tab at the beginning of main content
+if tab_selection == "📖 Overview":
+    st.markdown("<h2 style='color: #f1f5f9 !important;'>📖 Project Overview</h2>", unsafe_allow_html=True)
+    
+    col1, col2 = st.columns([2, 1])
+    
+    with col1:
+        st.markdown("""
+        <div style='background: rgba(255,255,255,0.1); padding: 30px; border-radius: 20px; margin-bottom: 20px;'>
+            <h3 style='color: #f1f5f9 !important;'>🎓 Advanced Student Performance Predictor</h3>
+            <p style='color: #cbd5e1 !important; font-size: 16px; line-height: 1.6;'>
+            A comprehensive AI-powered web application that predicts student academic performance using machine learning 
+            and provides data-driven insights for educational improvement. This system combines traditional data analysis 
+            with cutting-edge AI capabilities to help educators and students understand performance patterns.
+            </p>
+            <p style='color: #60a5fa !important; font-size: 14px; font-weight: bold; margin-top: 15px;'>
+            🔄 Smart Data Handling: If Kaggle dataset is unavailable, the system automatically uses pre-trained models. 
+            If both are unavailable, it generates sample data for seamless predictions.
+            </p>
+        </div>
+        """, unsafe_allow_html=True)
+        
+        # Features Section
+        st.markdown("<h3 style='color: #f1f5f9 !important;'>🚀 Key Features</h3>", unsafe_allow_html=True)
+        
+        features = [
+            {
+                "icon": "🔮",
+                "title": "Smart Predictions",
+                "description": "Predict student performance using Random Forest algorithm with real-time accuracy metrics"
+            },
+            {
+                "icon": "🤖",
+                "title": "AI-Powered Insights",
+                "description": "Get intelligent analysis and recommendations using Gemini AI integration"
+            },
+            {
+                "icon": "🔄",
+                "title": "Continuous Self-Learning",
+                "description": "Model automatically improves over time with user feedback and new data"
+            },
+            {
+                "icon": "📊",
+                "title": "Interactive Analytics",
+                "description": "Visualize data patterns with interactive charts and performance dashboards"
+            },
+            {
+                "icon": "💾",
+                "title": "Auto-Save Model",
+                "description": "Automatically save and load trained models for persistent learning"
+            },
+            {
+                "icon": "🎯",
+                "title": "Personalized Recommendations",
+                "description": "Get tailored study strategies based on individual student profiles"
+            }
+        ]
+        
+        cols = st.columns(2)
+        for idx, feature in enumerate(features):
+            with cols[idx % 2]:
+                st.markdown(f"""
+                <div style='background: rgba(255,255,255,0.05); padding: 20px; border-radius: 15px; margin-bottom: 15px; border-left: 4px solid #3b82f6;'>
+                    <h4 style='color: #f1f5f9 !important; margin: 0 0 10px 0;'>{feature['icon']} {feature['title']}</h4>
+                    <p style='color: #cbd5e1 !important; margin: 0; font-size: 14px;'>{feature['description']}</p>
+                </div>
+                """, unsafe_allow_html=True)
+    
+    with col2:
+        # Technology Stack
+        st.markdown("<h3 style='color: #f1f5f9 !important;'>🛠️ Technology Stack</h3>", unsafe_allow_html=True)
+        
+        technologies = [
+            {"name": "Streamlit", "purpose": "Web Framework"},
+            {"name": "Scikit-learn", "purpose": "Machine Learning"},
+            {"name": "Plotly", "purpose": "Data Visualization"},
+            {"name": "Gemini AI", "purpose": "AI Assistant"},
+            {"name": "Pandas/Numpy", "purpose": "Data Processing"},
+            {"name": "Kaggle Dataset", "purpose": "Real Student Data"}
+        ]
+        
+        for tech in technologies:
+            st.markdown(f"""
+            <div style='background: rgba(255,255,255,0.05); padding: 15px; border-radius: 10px; margin-bottom: 10px;'>
+                <p style='color: #60a5fa !important; margin: 0; font-weight: bold;'>{tech['name']}</p>
+                <p style='color: #cbd5e1 !important; margin: 0; font-size: 12px;'>{tech['purpose']}</p>
+            </div>
+            """, unsafe_allow_html=True)
+        
+        # Data Fallback System
+        st.markdown("<h3 style='color: #f1f5f9 !important; margin-top: 20px;'>📁 Data Fallback System</h3>", unsafe_allow_html=True)
+        
+        fallback_steps = [
+            {
+                "step": "1️⃣",
+                "description": "Try to load Kaggle dataset (StudentsPerformance.csv)"
+            },
+            {
+                "step": "2️⃣", 
+                "description": "If unavailable, load pre-trained model (student_performance_model.pkl)"
+            },
+            {
+                "step": "3️⃣",
+                "description": "If both unavailable, generate realistic sample data automatically"
+            }
+        ]
+        
+        for step in fallback_steps:
+            st.markdown(f"""
+            <div style='background: rgba(255,255,255,0.05); padding: 12px; border-radius: 8px; margin-bottom: 8px;'>
+                <div style='display: flex; align-items: center; gap: 10px;'>
+                    <span style='color: #60a5fa; font-size: 16px;'>{step['step']}</span>
+                    <p style='color: #cbd5e1 !important; margin: 0; font-size: 12px;'>{step['description']}</p>
+                </div>
+            </div>
+            """, unsafe_allow_html=True)
+        
+    # Quick Stats
+    st.markdown("<h3 style='color: #f1f5f9 !important; margin-top: 20px;'>📈 Project Stats</h3>", unsafe_allow_html=True)
+    
+    if st.session_state.df is not None:
+        total_students = len(st.session_state.df)
+        high_performers = (st.session_state.df['performance'] == 'High').sum()
+        success_rate = (high_performers / total_students) * 100
+        data_source = "Kaggle Dataset" if st.session_state.dataset_available else "Sample Data"
+    else:
+        total_students = "N/A"
+        success_rate = "N/A"
+        data_source = "Pre-trained Model"
+    
+    stats = [
+        {"label": "Total Students", "value": total_students},
+        {"label": "Model Accuracy", "value": f"{st.session_state.accuracy*100:.1f}%" if st.session_state.model_trained else "Not Trained"},
+        {"label": "Learning Updates", "value": st.session_state.learning_updates},
+        {"label": "Success Rate", "value": f"{success_rate:.1f}%" if st.session_state.df is not None else "N/A"},
+        {"label": "Data Source", "value": data_source}
+    ]
+    
+    for stat in stats:
+        st.markdown(f"""
+        <div style='background: rgba(255,255,255,0.05); padding: 12px; border-radius: 8px; margin-bottom: 8px;'>
+            <p style='color: #cbd5e1 !important; margin: 0; font-size: 12px;'>{stat['label']}</p>
+            <p style='color: #60a5fa !important; margin: 0; font-weight: bold; font-size: 16px;'>{stat['value']}</p>
+        </div>
+        """, unsafe_allow_html=True)
+    
+    # How It Works Section
+    st.markdown("<h3 style='color: #f1f5f9 !important; margin-top: 30px;'>🔧 How It Works</h3>", unsafe_allow_html=True)
+    
+    steps = [
+        {
+            "step": "1",
+            "title": "Smart Data Loading",
+            "description": "Automatically loads Kaggle dataset, falls back to pre-trained model, or generates sample data if needed"
+        },
+        {
+            "step": "2",
+            "title": "Model Training & Prediction",
+            "description": "Train Random Forest classifier and make real-time performance predictions"
+        },
+        {
+            "step": "3",
+            "title": "Interactive Analysis",
+            "description": "Provide detailed performance analysis with interactive visualizations and charts"
+        },
+        {
+            "step": "4",
+            "title": "Continuous Self-Learning",
+            "description": "Model automatically improves with user feedback through auto-learning system"
+        },
+        {
+            "step": "5",
+            "title": "AI-Powered Insights",
+            "description": "Get intelligent recommendations using integrated Gemini AI assistant"
+        }
+    ]
+    
+    for step in steps:
+        st.markdown(f"""
+        <div style='background: rgba(255,255,255,0.05); padding: 20px; border-radius: 15px; margin-bottom: 15px; border-left: 4px solid #8b5cf6;'>
+            <div style='display: flex; align-items: flex-start; gap: 15px;'>
+                <div style='background: linear-gradient(135deg, #8b5cf6, #7c3aed); color: white; width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; flex-shrink: 0;'>
+                    {step['step']}
+                </div>
+                <div>
+                    <h4 style='color: #f1f5f9 !important; margin: 0 0 8px 0;'>{step['title']}</h4>
+                    <p style='color: #cbd5e1 !important; margin: 0;'>{step['description']}</p>
+                </div>
+            </div>
+        </div>
+        """, unsafe_allow_html=True)
+    
+    # Data Sources Section
+    st.markdown("<h3 style='color: #f1f5f9 !important; margin-top: 30px;'>📚 Data Sources & Fallback</h3>", unsafe_allow_html=True)
+    
+    data_sources = [
+        {
+            "source": "🎯 Primary Source",
+            "description": "Kaggle Students Performance Dataset",
+            "details": "Real student data with exam scores, demographics, and educational factors"
+        },
+        {
+            "source": "💾 Secondary Source", 
+            "description": "Pre-trained Model Files",
+            "details": "Automatically saved models from previous training sessions"
+        },
+        {
+            "source": "🔄 Fallback Source",
+            "description": "Generated Sample Data",
+            "details": "Realistic synthetic data created when primary sources are unavailable"
+        }
+    ]
+    
+    for source in data_sources:
+        st.markdown(f"""
+        <div style='background: rgba(255,255,255,0.05); padding: 20px; border-radius: 15px; margin-bottom: 15px; border-left: 4px solid #10b981;'>
+            <h4 style='color: #f1f5f9 !important; margin: 0 0 8px 0;'>{source['source']}</h4>
+            <p style='color: #60a5fa !important; margin: 0 0 5px 0; font-weight: bold;'>{source['description']}</p>
+            <p style='color: #cbd5e1 !important; margin: 0; font-size: 14px;'>{source['details']}</p>
+        </div>
+        """, unsafe_allow_html=True)
+    
+    # Use Cases Section
+    st.markdown("<h3 style='color: #f1f5f9 !important; margin-top: 30px;'>🎯 Use Cases</h3>", unsafe_allow_html=True)
+    
+    use_cases = [
+        "🏫 **Educational Institutions**: Identify at-risk students and provide targeted support",
+        "👨‍🏫 **Teachers**: Understand class performance patterns and adjust teaching strategies", 
+        "🎓 **Students**: Get personalized study recommendations and performance insights",
+        "👨‍👩‍👧‍👦 **Parents**: Monitor student progress and understand factors affecting performance",
+        "🔬 **Researchers**: Analyze educational data patterns and test hypotheses"
+    ]
+    
+    for use_case in use_cases:
+        st.markdown(f"""
+        <div style='background: rgba(255,255,255,0.05); padding: 15px; border-radius: 10px; margin-bottom: 10px;'>
+            <p style='color: #cbd5e1 !important; margin: 0;'>{use_case}</p>
+        </div>
+        """, unsafe_allow_html=True)
+    
+    # Developer Info
+    st.markdown("---")
+    st.markdown("""
+    <div style='background: linear-gradient(135deg, #1e293b, #0f172a); padding: 25px; border-radius: 15px; text-align: center;'>
+        <h3 style='color: #f1f5f9 !important; margin-bottom: 10px;'>👨‍💻 Developer Information</h3>
+        <p style='color: #60a5fa !important; font-size: 18px; font-weight: bold; margin: 5px 0;'>Ahmer ALI</p>
+        <p style='color: #cbd5e1 !important; margin: 5px 0;'>BSCS Student at Sindh University</p>
+        <p style='color: #94a3b8 !important; margin: 5px 0; font-size: 14px;'>Advanced Student Performance Predictor with Auto-Learning AI</p>
+        <p style='color: #60a5fa !important; margin: 10px 0 0 0; font-size: 14px; font-weight: bold;'>
+        🔄 Smart Fallback System: Always functional with Kaggle data, pre-trained models, or generated samples
+        </p>
+    </div>
+    """, unsafe_allow_html=True)
+    
+    
 # Main content based on selection
 # if tab_selection == "🤖 AI Assistant":
 #     st.markdown("<h2 style='color: #f1f5f9 !important;'>🤖 AI Educational Assistant</h2>", unsafe_allow_html=True)
@@ -1312,7 +1568,7 @@ with st.sidebar:
 #                 st.rerun()
 
 
-if tab_selection == "🤖 AI Assistant":
+elif tab_selection == "🤖 AI Assistant":
     import streamlit.components.v1 as components
     import html as html_lib
     
@@ -1320,26 +1576,123 @@ if tab_selection == "🤖 AI Assistant":
     if "chat_history" not in st.session_state:
         st.session_state.chat_history = []
 
-    # === Header ===
+    # col_main, col_sidebar = st.columns([3, 1])
+    
+    # with col_main:
+        # === Header ===
     st.markdown("""
     <div style='padding: 1.5rem; background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
                 border-radius: 12px; border: 1px solid rgba(255,255,255,0.1);
                 margin-bottom: 1.5rem; box-shadow: 0 2px 15px rgba(0,0,0,0.2);'>
         <h2 style='color: #f1f5f9; margin: 0; font-size: 1.8rem;'>🤖 AI Educational Assistant</h2>
         <p style='color: #94a3b8; margin: 8px 0 0; font-size: 0.95rem;'>
-            Chat with AI to get answers about study tips, data, and analysis.
+            Chat with AI to get answers about study tips, data analysis, and auto-learning features.
         </p>
     </div>
     """, unsafe_allow_html=True)
+    # with col_sidebar:
+        # st.markdown("<h4 style='color: #f1f5f9 !important;'>🔄 Auto-Learning Status</h4>", unsafe_allow_html=True)
+        
+        # status_color = "#10b981" if st.session_state.auto_learning_enabled else "#ef4444"
+        # status_text = "ACTIVE" if st.session_state.auto_learning_enabled else "PAUSED"
+        
+        # st.markdown(f"""
+        # <div style='background: rgba(30,41,59,0.8); padding: 15px; border-radius: 10px; border-left: 4px solid {status_color};'>
+        #     <p style='color: #e2e8f0 !important; margin: 0; font-size: 14px;'>Auto-Learning</p>
+        #     <p style='color: {status_color} !important; margin: 5px 0 0 0; font-size: 16px; font-weight: bold;'>{status_text}</p>
+        #     <p style='color: #94a3b8 !important; margin: 0; font-size: 12px;'>Updates: {st.session_state.learning_updates}</p>
+        #     <p style='color: #94a3b8 !important; margin: 0; font-size: 12px;'>Accuracy: {st.session_state.accuracy*100:.1f}%</p>
+        # </div>
+        # """, unsafe_allow_html=True)
 
-    # === Build Chat HTML ===
+    # # === Quick Actions Sidebar ===
+    # col_main, col_sidebar = st.columns([3, 1])
+    
+    # with col_sidebar:
+    # #     st.markdown("<h3 style='color: #f1f5f9 !important;'>💡 Quick Actions</h3>", unsafe_allow_html=True)
+        
+    # #     # Auto-learning specific questions
+    # #     st.markdown("#### 🔄 Auto-Learning")
+    # #     learning_questions = [
+    # #         "How does the auto-learning feature work?",
+    # #         "What is continuous self-learning?",
+    # #         "How can I help the model improve?",
+    # #         "Explain the auto-learning system",
+    # #         "How many updates has the model received?"
+    # #     ]
+        
+    # #     for question in learning_questions:
+    # #         if st.button(f"❓ {question}", key=f"learn_{question}", use_container_width=True):
+    # #             st.session_state.chat_history.append({'role': 'user', 'content': question})
+    # #             with st.spinner("🤖 Explaining auto-learning..."):
+    # #                 ai_response = get_ai_response(question)
+    # #                 st.session_state.chat_history.append({'role': 'assistant', 'content': ai_response})
+    # #             st.rerun()
+        
+    # #     # Prediction-related questions
+    # #     if st.session_state.current_prediction:
+    # #         st.markdown("#### 🎯 Prediction Analysis")
+    # #         pred_questions = [
+    # #             "Analyze my current prediction",
+    # #             "How does auto-learning affect predictions?",
+    # #             "How can I improve my performance?",
+    # #             "What are my strengths and weaknesses?",
+    # #             "How accurate is the model?"
+    # #         ]
+            
+    # #         for question in pred_questions:
+    # #             if st.button(f"❓ {question}", key=f"pred_{question}", use_container_width=True):
+    # #                 st.session_state.chat_history.append({'role': 'user', 'content': question})
+    # #                 with st.spinner("🤖 Analyzing your prediction..."):
+    # #                     ai_response = get_ai_response(question)
+    # #                     st.session_state.chat_history.append({'role': 'assistant', 'content': ai_response})
+    # #                 st.rerun()
+        
+    # #     st.markdown("#### 📚 Educational Questions")
+    # #     edu_questions = [
+    # #         "What factors most influence student performance?",
+    # #         "How can students improve their math scores?",
+    # #         "What's the impact of parental education?",
+    # #         "Give me study strategies for better performance"
+    # #     ]
+        
+    # #     for question in edu_questions:
+    # #         if st.button(f"❓ {question}", key=f"edu_{question}", use_container_width=True):
+    # #             st.session_state.chat_history.append({'role': 'user', 'content': question})
+    # #             with st.spinner("🤖 Researching educational insights..."):
+    # #                 ai_response = get_ai_response(question)
+    # #                 st.session_state.chat_history.append({'role': 'assistant', 'content': ai_response})
+    # #             st.rerun()
+        
+    # #     # Auto-learning status
+    #     st.markdown("---")
+    #     st.markdown("<h4 style='color: #f1f5f9 !important;'>🔄 Auto-Learning Status</h4>", unsafe_allow_html=True)
+        
+    #     status_color = "#10b981" if st.session_state.auto_learning_enabled else "#ef4444"
+    #     status_text = "ACTIVE" if st.session_state.auto_learning_enabled else "PAUSED"
+        
+    #     st.markdown(f"""
+    #     <div style='background: rgba(30,41,59,0.8); padding: 15px; border-radius: 10px; border-left: 4px solid {status_color};'>
+    #         <p style='color: #e2e8f0 !important; margin: 0; font-size: 14px;'>Auto-Learning</p>
+    #         <p style='color: {status_color} !important; margin: 5px 0 0 0; font-size: 16px; font-weight: bold;'>{status_text}</p>
+    #         <p style='color: #94a3b8 !important; margin: 0; font-size: 12px;'>Updates: {st.session_state.learning_updates}</p>
+    #         <p style='color: #94a3b8 !important; margin: 0; font-size: 12px;'>Accuracy: {st.session_state.accuracy*100:.1f}%</p>
+    #     </div>
+    #     """, unsafe_allow_html=True)
+
+    # with col_main:
+        # === Build Chat HTML ===
     chat_messages_html = ""
     
     if not st.session_state.chat_history:
         chat_messages_html = """
         <div class='empty-chat'>
             <h3>💭 Start chatting with the AI Assistant</h3>
-            <p style='color: #64748b; font-size: 0.9rem;'>Ask me anything about your studies!</p>
+            <p style='color: #64748b; font-size: 0.9rem;'>Ask me about:</p>
+            <p style='color: #64748b; font-size: 0.8rem;'>• Student performance predictions</p>
+            <p style='color: #64748b; font-size: 0.8rem;'>• Auto-learning features</p>
+            <p style='color: #64748b; font-size: 0.8rem;'>• Study strategies and tips</p>
+            <p style='color: #64748b; font-size: 0.8rem;'>• Data analysis insights</p>
         </div>
         """
     else:
@@ -1443,7 +1796,7 @@ if tab_selection == "🤖 AI Assistant":
         .empty-chat {{
             text-align: center;
             color: #64748b;
-            padding-top: 20%;
+            padding-top: 15%;
         }}
 
         .chat-screen::-webkit-scrollbar {{
@@ -1470,22 +1823,9 @@ if tab_selection == "🤖 AI Assistant":
     </html>
     """
 
-   # === Chat and Input Container ===
+    # === Chat and Input Container ===
     st.markdown("""
     <style>
-        .chat-wrapper {
-            position: relative;
-            background: rgba(15, 23, 42, 0.5);
-            border-radius: 20px;
-            padding: 1rem;
-            margin-bottom: 0rem; /* 🔹 Remove extra space below */
-        }
-
-        /* Remove Streamlit default top spacing */
-        .stForm {
-            margin-top: -6rem !important;
-            padding-top: 0rem !important;
-        }
         .chat-wrapper {
             position: relative;
             background: rgba(15, 23, 42, 0.5);
@@ -1494,22 +1834,26 @@ if tab_selection == "🤖 AI Assistant":
             margin-bottom: 1rem;
         }
 
+        .stForm {
+            margin-top: -6rem !important;
+            padding-top: 0rem !important;
+        }
     </style>
     """, unsafe_allow_html=True)
 
     # === Render Chat ===
     components.html(full_html, height=500, scrolling=False)
 
-    # === Input Section (Directly below chat, no upper gap) ===
+    # === Input Section ===
     with st.form("chat_form", clear_on_submit=True):
-        col1, col2 = st.columns([5, 1])
-        with col1:
+        col_input, col_send = st.columns([5, 1])
+        with col_input:
             user_input = st.text_input(
                 "Message", 
-                placeholder="Type your message here...", 
+                placeholder="Ask about auto-learning, predictions, or study tips...", 
                 label_visibility="collapsed"
             )
-        with col2:
+        with col_send:
             send_btn = st.form_submit_button("📤 Send", use_container_width=True)
 
     # === Handle Chat Logic ===
@@ -1522,9 +1866,34 @@ if tab_selection == "🤖 AI Assistant":
 
     # === Clear Chat ===
     if st.session_state.chat_history:
-        if st.button("🗑️ Clear Chat"):
-            st.session_state.chat_history = []
-            st.rerun()
+        col_clear, col_insights, col_export = st.columns([1, 1, 1])
+        with col_clear:
+            if st.button("🗑️ Clear Chat", use_container_width=True):
+                st.session_state.chat_history = []
+                st.rerun()
+        with col_insights:
+            if st.button("📊 Get Dataset Insights", use_container_width=True):
+                st.session_state.chat_history.append({'role': 'user', 'content': "Provide key insights from the dataset and explain the auto-learning system"})
+                with st.spinner("🤖 Analyzing dataset and auto-learning..."):
+                    ai_response = get_ai_response("Provide key insights from the dataset and explain the auto-learning system")
+                    st.session_state.chat_history.append({'role': 'assistant', 'content': ai_response})
+                st.rerun()
+        with col_export:
+            if st.button("💾 Export Chat", use_container_width=True):
+                # Create downloadable chat history
+                chat_text = "AI Assistant Chat History\n"
+                chat_text += "=" * 30 + "\n\n"
+                for msg in st.session_state.chat_history:
+                    role = "You" if msg["role"] == "user" else "AI Assistant"
+                    chat_text += f"{role}: {msg['content']}\n\n"
+                
+                st.download_button(
+                    label="Download Chat",
+                    data=chat_text,
+                    file_name=f"ai_assistant_chat_{datetime.datetime.now().strftime('%Y%m%d_%H%M')}.txt",
+                    mime="text/plain",
+                    use_container_width=True
+                )
 
 
 # elif tab_selection == "🔮 Predict Performance":
