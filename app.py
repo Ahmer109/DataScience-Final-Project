@@ -1538,25 +1538,9 @@ def make_prediction(input_data, algorithm, model, encoders, scaler, target_encod
 def load_kaggle_data():
     """Load Kaggle Students Performance Dataset"""
     try:
-        # df = pd.read_csv("StudentsPerformance.csv")
+        df = pd.read_csv("StudentsPerformance.csv")
         
-        # st.sidebar.info(f"📊 Loaded Kaggle Dataset: {len(df)} students")
-        import gdown
-        
-        # Your Google Drive file ID
-        file_id = "1Y7NydfRMGUFULWgxsAvsybu5w4-62cmB"
-        
-        # Download the file
-        url = f"https://drive.google.com/uc?id={file_id}"
-        output = "StudentsPerformance.csv"
-        
-        # Download with gdown
-        gdown.download(url, output, quiet=False)
-        
-        # Load the CSV
-        df = pd.read_csv(output)
-        
-        st.sidebar.info(f"📊 Loaded Dataset: {len(df)} students")
+        st.sidebar.info(f"📊 Loaded Kaggle Dataset: {len(df)} students")
         
         column_mapping = {
             'math score': 'math_score',
